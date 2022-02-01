@@ -7,16 +7,15 @@ def sum(M, N):
     # with every loop, so we can check the addition
     # 'i' will be a counter variable to check the other numbers of the array to check for the other elements of the addition
     # size will be a control variable, to make sure we don't get overflow errors with the array
-
-    a = M[0]
-    i = 0
+    a = 0
+    i = 1
     size = len(M)
 
     while True:
         # first we check if the addition is true
-        if (a + M[i]) == N:
+        if (M[a] + M[i]) == N:
             # if it´s true we add the values to A, and return the result
-            A.append(a)
+            A.append(M[a])
             A.append(M[i])
             return print(A)
         # otherwise we check the point in the array that the variable i is, and we move it to the next position
@@ -26,7 +25,6 @@ def sum(M, N):
             # to the next position or if we end the program because there aer no more values in the array
         elif (a + 1) == i:
             return print("There are no values that will get the value of ", N, " by adding them.")
-            break
         else:
             a += 1
             i = a + 1
