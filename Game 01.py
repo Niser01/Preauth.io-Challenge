@@ -3,22 +3,34 @@
 def sum(M, N):
     # Creation of the array A, that will get the answer if there are added values
     A = []
-    # 2 iterations made with 'for', the  'i for' will remain static while the 'j for' will
-    # check if the other values in the array can be added with the value of i.
-    for i in range(len(M)):
-        for j in range(i, len(M)):
-            # The program will not check the values in the same position and because of this, I made ths If statement
-            # that will avoid this comparison that will happen at the beginning of the iterations
-            if i == j:
-                continue
-            elif M[i] + M[j] == N:
-                # The values that will get the addition will be added to the array A with the method append
-                A.append(M[i])
-                A.append(M[j])
-                return print(A)
-    # In case that the program didn't found any numbers that will fulfill the criteria of the addition
-    # it will print a massage saying this:
-    return print("There are no values that will get the value of ", N, " by adding them.")
+    # There are 3 variables created, a will take the first element of the array initially and will change to each element of the array
+    # with every loop, so we can check the addition
+    # 'i' will be a counter variable to check the other numbers of the array to check for the other elements of the addition
+    # size will be a control variable, to make sure we don't get overflow errors with the array
+
+    a = M[0]
+    i = 0
+    size = len(M)
+
+    while True:
+        # first we check if the addition is true
+        if (a + M[i]) == N:
+            # if it´s true we add the values to A, and return the result
+            A.append(a)
+            A.append(M[i])
+            return print(A)
+        # otherwise we check the point in the array that the variable i is, and we move it to the next position
+        elif (i + 1) < size:
+            i += 1
+            # if the value of i is in the final position of the array, we also check where a is, so we can move a
+            # to the next position or if we end the program because there aer no more values in the array
+        elif (a + 1) == i:
+            return print("There are no values that will get the value of ", N, " by adding them.")
+            break
+        else:
+            a += 1
+            i = a + 1
+
 
 if __name__ == '__main__':
     # In this fist while, the program gets the input of the set of numbers M
